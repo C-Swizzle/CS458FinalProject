@@ -1,10 +1,10 @@
 # The Price is Right DApp
 
 Team Members:
-Chris MacKenzie
-Ian Taylor
-Tony Phan
-Derek McCracken
+* Chris MacKenzie
+* Ian Taylor
+* Tony Phan
+* Derek McCracken
 
 Project Summary:
 On the front end, the user will have the choice 1-100, 1-1000, 1-10000 for their “guessing bracket” once their bracket has been chosen the user can select a random number in this range to place their bet. After their guess has been confirmed their chosen number will be compared against our randomly generated number, the user will also be given some leeway with their bet. For example, if the user choses 1-100 and guesses 2, while the answer is 99, 2 is within 5 points with a wraparound so the user would receive their initial bet and a reward.
