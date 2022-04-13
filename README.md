@@ -1,6 +1,6 @@
 # The Price is Right DApp
 
-Team Members:
+### Team Members:
 * Chris MacKenzie
 * Ian Taylor
 * Tony Phan
