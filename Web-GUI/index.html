@@ -4,9 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <title>The Price is Right dApp</title>
 </head>
 <body>
-    Come back later when it is updated!
+    <div class="container">
+        <div class="row"><h1>Welcome to The Price Is Right dApp!</h1></div>
+        <div class="row"><h3>Pick your guessing range</h3></div>
+    <div class="row">
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="price-range-1" value="price-range-1" checked>
+        <label class="form-check-label" for="price-range-1">
+          1 -   100
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="price-range-2" value="price-range-2">
+        <label class="form-check-label" for="price-range-2">
+          1 -  1,000
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="price-range-3" value="price-range-3">
+        <label class="form-check-label" for="price-range-3">
+          1 - 10,000
+        </label>
+      </div>
+    </div>
+    <div class="row"><h3>Enter your wager</h3></div>
+    <div class="input-group">
+        <input type="text" class="form-control mb-2" placeholder="Wager" aria-label="Recipient's username">
+        
+    </div>
+    <div class="row"><h3 id="expected-return">Expected return on a win:</h3></div>
+    
+    <div class="row"><h3 id="winning-numbers">Number range that would be considered a win: </h3></div>
+    <button type="button" class="btn btn-success mt-2">Place bet (THIS CANNOT BE UNDONE!!!)</button>
+</div>
 </body>
 </html>
