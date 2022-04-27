@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PriceCoin</title>
+  </head>
+  <style>
+    input {
+      display: block;
+      margin-bottom: 12px;
+    }
+  </style>
+  <body>
+    <h1>PriceCoin</h1>
+    <p>You have <strong class="balance">loading...</strong> PRICE</p>
+
+    <h1>Buy PriceCoin</h1>
+
+    <label for="buyAmount">Amount: (1ETH : 500PRC)</label>
+    <input type="text" id="buyAmount" placeholder="Ether to exchange" />
+
+    <button onclick="App.buyPrice()">Buy PriceCoin</button>
+
+    <h1>Sell PriceCoin</h1>
+
+    <label for="sellAmount">Amount: (1ETH : 500PRC)</label>
+    <input type="text" id="sellAmount" placeholder="PriceCoin to exchange" />
+
+    <button onclick="App.sellPrice()">Sell PriceCoin</button>
+
+    <p id="status"></p>
+    <p>:^)</p>
+    <script src="index.js"></script>
+  </body>
+</html>
