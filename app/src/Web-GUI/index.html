@@ -5,44 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <title>The Price is Right dApp</title>
+    <link rel="stylesheet" href="style.css">
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+<script src="script.js"></script>    
+<title>The Price is Right dApp</title>
 </head>
 <body>
     <div class="container">
         <div class="row"><h1>Welcome to The Price Is Right dApp!</h1></div>
-        <div class="row"><h3>Pick your guessing range</h3></div>
-    <div class="row">
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="price-range-1" value="price-range-1" checked>
-        <label class="form-check-label" for="price-range-1">
-          1 -   100
-        </label>
+        <div class="row"><h3>Guess a number between 1 - 100</h3></div>
+        <div class="input-group">
+          <input type="text" class="form-control mb-2" placeholder="Guess" aria-label="Recipient's username" id="guess">
+        </div>
+        <div class="row">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+          <label class="form-check-label" for="flexCheckChecked">
+            Leeway
+          </label>
+          
+        </div>
       </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="price-range-2" value="price-range-2">
-        <label class="form-check-label" for="price-range-2">
-          1 -  1,000
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="price-range-3" value="price-range-3">
-        <label class="form-check-label" for="price-range-3">
-          1 - 10,000
-        </label>
+      <div class="row" id="slider-row">
+      <div class="slider">
+        <input type="range" min="1" max="24" value="10" id="leeway"  oninput="rangeValue.innerText = this.value">
+        <p id="rangeValue">10</p>
       </div>
     </div>
-    <div class="row"><h3>Enter your wager</h3></div>
+
+    <div class="row" id="wager"><h3>Enter your wager</h3></div>
     <div class="input-group">
         <input type="text" class="form-control mb-2" placeholder="Wager" aria-label="Recipient's username">
         
     </div>
     <div class="row"><h3 id="expected-return">Expected return on a win:</h3></div>
     
-    <div class="row"><h3 id="winning-numbers">Number range that would be considered a win: </h3></div>
-    <button type="button" class="btn btn-success mt-2">Place bet (THIS CANNOT BE UNDONE!!!)</button>
+    <div class="row"><h3 id="win-msg">You will win if the number is<span id="win-con"> between</span>: <span id="num-range"></span></h3></div>
+    <button type="button" class="btn btn-success mt-2" id="send-button">Place bet (THIS CANNOT BE UNDONE!!!)</button>
 </div>
 </body>
 </html>
