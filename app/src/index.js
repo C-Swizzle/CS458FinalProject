@@ -16,10 +16,6 @@ const App = {
       const deployedNetworkCoin = priceCoinArtifact.networks[networkId];
       const deployedNetworkExchange = priceExchangeArtifact.networks[networkId];
       
-      this.coin = new web3.eth.Contract(
-        priceCoinArtifact.abi,
-        deployedNetworkCoin.address,
-      );
       this.exchange = new web3.eth.Contract(
         priceExchangeArtifact.abi,
         deployedNetworkExchange.address
@@ -62,6 +58,26 @@ const App = {
     console.log(await this.exchange.methods.sellPrice(this.account, amount).send({ from: this.account}));
 
     this.setStatus("Transaction complete!");
+    this.refreshBalance();
+  },
+
+  play: async function() {
+    const betAmount = document.getElementById("betAmount").value;
+    const leeway = document.getElementById("leeway").value;
+    const guess = document.getElementById("guess").value;
+
+    const results = await this.exchange.methods.play(this.account, betAmount, guess, leeway).send({from: this.account});
+    const won = results["events"]["Outcome"]["returnValues"][0]; // Boolean - whether user won or not.
+    const payout = results["events"]["Outcome"]["returnValues"][1]; // Payout amount 
+    const randomNum = results["events"]["Outcome"]["returnValues"][2] // Random number that was generated.
+    console.log(results);
+
+    let outcome = document.getElementById("outcome");
+    outcome.innerHTML = won ? "You won " + payout + " PRC!": "You lost " + betAmount + " PRC!";
+
+    let number = document.getElementById("number");
+    number.innerHTML = "The random number was: " + randomNum;
+
     this.refreshBalance();
   },
 
