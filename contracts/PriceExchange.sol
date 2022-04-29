@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 contract PriceExchange is PriceCoin {
     event Buy(uint256 priceRequested, uint256 etherPaid);
     event Sell(uint256 pricePaid, uint256 etherRequested);
-    event Outcome(bool won, uint256 betAmount, uint256 randomNum);
+    event Outcome(bool won, uint256 payout, uint256 randomNum);
 
     function buyPrice() external payable {
         require(msg.value >= 0, "You must send some ether.");
@@ -22,7 +22,7 @@ contract PriceExchange is PriceCoin {
 
         require(_balances[_to] >= priceToSell, "You must hold an equal or lesser value of price coin to sell this much.");
         _burn(_to, priceToSell);
-        (bool paid, ) =_to.call{value: etherRequested}("");
+        (bool paid,) = _to.call{value: etherRequested }("");
         require(paid, "Transaction failed");
         emit Sell(priceToSell, etherRequested);
     }
@@ -67,7 +67,7 @@ contract PriceExchange is PriceCoin {
         }
     }
 
-    function play( address payable _to, uint256 betAmount, int256 guess, int256 leeway) external payable {
+    function play(address _to, uint256 betAmount, int256 guess, int256 leeway) external {
         require(guess >= 1 && guess <= 100, "Guess has to be between 1 and 100.");
         require(leeway >= 0 && leeway <= 24, "Leeway has to be between 0 and 24");
 
@@ -82,6 +82,6 @@ contract PriceExchange is PriceCoin {
         if (won) {
             _mint(_to, getPayout(priceToBet, leeway));
         }
-        emit Outcome(won, betAmount, randomNum);
+        emit Outcome(won, SafeMath.div(getPayout(priceToBet, leeway) - priceToBet, 10**_decimals), randomNum);
     }
 }
