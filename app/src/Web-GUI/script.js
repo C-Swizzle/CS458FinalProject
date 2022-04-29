@@ -10,6 +10,11 @@ $(document).on( 'change','#guess', function () {
     updateWinningNumbers()
 });
 
+
+$(document).on( 'change','#rangeValue1', function () { 
+    updateWinningNumbers()
+});
+
 $(document).on( 'click','#slider-row', function () { 
    updateWinningNumbers()
 });
@@ -33,8 +38,13 @@ function updateWinningNumbers(){
     }
     if($("#flexCheckChecked").is(":checked")){
     $("#num-range").text(`${min} - ${max}`)
+    $("#win-odds").text(`${leeway*2+1}% or ${((100-(leeway*2+1))/(leeway*2+1)).toFixed(2)}:1`);
+    $("#return-odds").text(`${(((100-(leeway*2+1))/(leeway*2+1)) - 0.05 * ((100-(leeway*2+1))/(leeway*2+1))).toFixed(2)}:1`)
+
     } else{
         $("#num-range").text(`${numGuess}`)
+        $("#win-odds").text("1% or 99.00:1");
+        $("#return-odds").text(`80.00:1`)
     }
 
 }
