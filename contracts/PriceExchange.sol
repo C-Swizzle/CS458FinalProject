@@ -37,7 +37,6 @@ contract PriceExchange is PriceCoin {
     function getRandomNumber() internal returns (int256) {
         uint256 randomNum = (uint256(keccak256(abi.encodePacked(block.timestamp, msg.sender, _randNonce++))) % 100) + 1;
         return int256(randomNum);
-        // return 100;
     }
 
     // Gets payout if number was within leeway. This method should also reimburse original bet amount.
@@ -45,6 +44,7 @@ contract PriceExchange is PriceCoin {
     function getPayout(uint256 betAmount, int256 leeway) private returns (uint256) {
         // if (leeway == 0) return (80 * betAmount) + betAmount;
         // uint256 range = SafeMath.add(SafeMath.mul(uint256(leeway), 2), 1);
+
         // uint256 odds = SafeMath.div(SafeMath.mul(SafeMath.sub(100, range), 10**_decimals), range);
         // uint256 percent = SafeMath.div(SafeMath.mul(5, 10**(_decimals + 2)), 100);
 
@@ -53,7 +53,7 @@ contract PriceExchange is PriceCoin {
 
         // emit Temp(SafeMath.div(SafeMath.mul(percent, odds), SafeMath.mul(100, 10**_decimals)));
         // return SafeMath.add(SafeMath.div(retOdds, 10**_decimals), betAmount); // + betAmount reimburses what was burned
-        return betAmount * 2;
+        // return betAmount * 2;
     }
 
     // Returns whether guess was in the leeway range and the random number.
