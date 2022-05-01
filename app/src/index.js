@@ -159,9 +159,6 @@ $( document ).ready(function() {
       var numLeeway = Number(leeway);
       var min = numGuess - numLeeway;
       var wager = Number($("#wager").val())
-      var win = await App.updateWin();
-      console.log(win["events"]);
-      console.log(wager)
       if(min<1){
           min+=100;
       }
@@ -181,13 +178,16 @@ $( document ).ready(function() {
       //var range = SafeMath.safeAdd(SafeMath.safeMule(leeway, 2), 1);
       //var odds = SafeMath.safeDiv(SafeMath.safeMule(SafeMath.safeSub(100, range), Math.pow(10,18)), range)
       $("#return-win").text(`${(retOdds * wager).toFixed(3)}`);
+
   
       } else{
           $("#win-con").hide()
           $("#num-range").text(`${numGuess}`)
           $("#win-odds").text("1% or 99.00:1");
           $("#return-odds").text(`80.00:1 [aka 80.00 coins profit for every 1 coin bet]`)
+
           $("#return-win").text(`${(80 * wager).toFixed(3)}`);
+
       }
   
   }
