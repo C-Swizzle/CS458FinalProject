@@ -1,3 +1,4 @@
+
 $( document ).ready(function() {
 
 $(document).on( 'click','#flexCheckChecked', function () { 
@@ -21,9 +22,17 @@ $(document).on( 'change','#wager', function () {
 $(document).on( 'click','#slider-row', function () { 
    updateWinningNumbers()
 });
+$(document).on( 'click','#slider-row-1', function () { 
+    updateWinningNumbers()
+ });
 
 
-$(document).on( 'click','#send-button', function () { console.log('click') });
+$(document).on( 'click','#send-button', async function () { 
+    //console.log(App.account)
+
+ });
+
+
 
 
 function updateWinningNumbers(){
