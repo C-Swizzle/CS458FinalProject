@@ -1,6 +1,7 @@
 import Web3 from "web3";
 import priceCoinArtifact from "../../build/contracts/PriceCoin.json";
 import priceExchangeArtifact from "../../build/contracts/PriceExchange.json";
+import SafeMath from "safemath";
 
 const App = {
   web3: null,
@@ -85,6 +86,13 @@ const App = {
     const status = document.getElementById("status");
     status.innerHTML = message;
   },
+  updateWin: async function(){
+    var leeway = $("#leeway").val();
+    var wager = $("#wager").val();
+    const win = await this.exchange.methods.getPayout2(wager,leeway);
+    console.log(win);
+    return win;
+  }
 };
 
 window.App = App;
@@ -151,7 +159,6 @@ $( document ).ready(function() {
       var numLeeway = Number(leeway);
       var min = numGuess - numLeeway;
       var wager = Number($("#wager").val())
-      // console.log(wager)
       if(min<1){
           min+=100;
       }
@@ -168,14 +175,19 @@ $( document ).ready(function() {
       $("#num-range").text(`${min} - ${max}`)
       $("#win-odds").text(`${leeway*2+1}% or ${odds}:1`);
       $("#return-odds").text(`${retOdds}:1 [aka ${retOdds} coins profit for every 1 coin bet]`)
-      $("#return-win").text(`${Math.floor(retOdds * wager)}`);
+      //var range = SafeMath.safeAdd(SafeMath.safeMule(leeway, 2), 1);
+      //var odds = SafeMath.safeDiv(SafeMath.safeMule(SafeMath.safeSub(100, range), Math.pow(10,18)), range)
+      $("#return-win").text(`${(retOdds * wager).toFixed(3)}`);
+
   
       } else{
           $("#win-con").hide()
           $("#num-range").text(`${numGuess}`)
           $("#win-odds").text("1% or 99.00:1");
           $("#return-odds").text(`80.00:1 [aka 80.00 coins profit for every 1 coin bet]`)
-          $("#return-win").text(`${Math.floor(80 * wager)}`);
+
+          $("#return-win").text(`${(80 * wager).toFixed(3)}`);
+
       }
   
   }
