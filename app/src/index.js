@@ -151,7 +151,7 @@ $( document ).ready(function() {
       var numLeeway = Number(leeway);
       var min = numGuess - numLeeway;
       var wager = Number($("#wager").val())
-      console.log(wager)
+      // console.log(wager)
       if(min<1){
           min+=100;
       }
@@ -168,14 +168,14 @@ $( document ).ready(function() {
       $("#num-range").text(`${min} - ${max}`)
       $("#win-odds").text(`${leeway*2+1}% or ${odds}:1`);
       $("#return-odds").text(`${retOdds}:1 [aka ${retOdds} coins profit for every 1 coin bet]`)
-      $("#return-win").text(`${Math.floor(retOdds * wager + wager)}`);
+      $("#return-win").text(`${Math.floor(retOdds * wager)}`);
   
       } else{
           $("#win-con").hide()
           $("#num-range").text(`${numGuess}`)
           $("#win-odds").text("1% or 99.00:1");
           $("#return-odds").text(`80.00:1 [aka 80.00 coins profit for every 1 coin bet]`)
-          $("#return-win").text(`${Math.floor(80 * wager + wager)}`);
+          $("#return-win").text(`${Math.floor(80 * wager)}`);
       }
   
   }
